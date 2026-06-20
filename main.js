@@ -75,6 +75,11 @@ function validatePhone(phone) {
   return /^[\d\s\+\-\(\)]{7,}$/.test(phone.trim());
 }
 
+function getTextareaValue(el) {
+  if (!el) return '';
+  return (el.value ?? '').toString();
+}
+
 if (form) {
   const nombre = document.getElementById('nombre');
   const correo = document.getElementById('correo');
@@ -113,8 +118,14 @@ if (form) {
     });
   }
 
+  // Debug opcional: confirmar que estamos leyendo el textarea correcto
+  console.log('[contactForm] textarea#mensaje found:', !!mensaje);
+
+
   form.addEventListener('submit', function(e) {
-    // 1) Validar y prevenir si hay errores
+    console.log('[contactForm] submit event fired');
+
+    // 1) Validar
     const nombreVal   = nombre?.value.trim() ?? '';
     const correoVal   = correo?.value.trim() ?? '';
     const telefonoVal = telefono?.value.trim() ?? '';
@@ -127,41 +138,77 @@ if (form) {
     const v4 = setError('mensaje',  'err-mensaje',  mensajeVal.length < 10);
     const v5 = setError('select',   'err-select',   !selectVal);
 
-
     // Si alguno falla, NO se envía
     if (!v1 || !v2 || !v3 || !v4 || !v5) {
+      console.warn('[contactForm] validation failed', { nombreValLen: nombreVal.length, correoVal, telefonoVal, mensajeValLen: mensajeVal.length, selectVal });
       e.preventDefault();
       return;
     }
 
-    // 2) UI: mostrar loader/ocultar success
+    // Ya pasó la validación: controlamos el submit para asegurar:
+    // - que se envíe a Netlify
+    // - que se muestre éxito
+    // - que el formulario quede en blanco
+    e.preventDefault();
+
     const formLoading = document.getElementById('form-loading');
     if (formLoading) formLoading.style.display = 'block';
     if (formSuccess) formSuccess.classList.remove('show');
-
-    // 3) Dejar el formulario en blanco inmediatamente
-    form.reset();
-
-    // 4) Reset visual de errores y botón
-    ['nombre','telefono','correo','select','mensaje'].forEach((id) => {
-      if (id === 'mensaje') setError('mensaje', 'err-mensaje', false);
-      if (id === 'nombre') setError('nombre', 'err-nombre', false);
-      if (id === 'telefono') setError('telefono', 'err-telefono', false);
-      if (id === 'correo') setError('correo', 'err-correo', false);
-      if (id === 'select') setError('select', 'err-select', false);
-    });
 
     if (btnSubmit) {
       btnSubmit.disabled = true;
       btnSubmit.textContent = 'Enviando…';
     }
 
-    // IMPORTANT: NO forcemos éxito todavía; dejamos que Netlify procese el envío.
-    // (El mensaje de éxito lo mostramos solo si recarga/redirect o si Netlify lo maneja.)
-    // Para que el usuario vea algo, mantenemos el loader, pero no agregamos #form-success aquí.
+    const formData = new FormData(form);
 
+    // Netlify Forms acepta este endpoint cuando usas data-netlify + name
+    const endpoint = '/';
 
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    })
+      .then((res) => {
+        console.log('[contactForm] fetch status:', res.status);
+        // Netlify típicamente retorna 200/201 si la captura fue bien.
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res;
+      })
+      .then(() => {
+        // Form en blanco + mensaje
+        form.reset();
 
+        // Ocultar errores
+        ['nombre','telefono','correo','select','mensaje'].forEach((id) => {
+          if (id === 'mensaje') setError('mensaje', 'err-mensaje', false);
+          if (id === 'nombre') setError('nombre', 'err-nombre', false);
+          if (id === 'telefono') setError('telefono', 'err-telefono', false);
+          if (id === 'correo') setError('correo', 'err-correo', false);
+          if (id === 'select') setError('select', 'err-select', false);
+        });
+
+        if (formLoading) formLoading.style.display = 'none';
+        if (formSuccess) formSuccess.classList.add('show');
+
+        if (btnSubmit) {
+          btnSubmit.disabled = false;
+          btnSubmit.textContent = 'Enviar mensaje';
+        }
+      })
+      .catch((err) => {
+        console.error('[contactForm] fetch error:', err);
+        if (formLoading) formLoading.style.display = 'none';
+        if (btnSubmit) {
+          btnSubmit.disabled = false;
+          btnSubmit.textContent = 'Enviar mensaje';
+        }
+
+        const errMsg = document.getElementById('form-error');
+        if (errMsg) errMsg.classList.add('show');
+        else alert('No se pudo enviar el formulario. Reintenta por favor.');
+      });
   });
 }
 
