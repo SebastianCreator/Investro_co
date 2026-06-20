@@ -119,13 +119,16 @@ if (form) {
     const correoVal   = correo?.value.trim() ?? '';
     const telefonoVal = telefono?.value.trim() ?? '';
     const mensajeVal  = mensaje?.value.trim() ?? '';
+    const selectVal   = select?.value ?? '';
 
     const v1 = setError('nombre',   'err-nombre',   nombreVal.length < 3);
     const v2 = setError('correo',   'err-correo',   !validateEmail(correoVal));
     const v3 = setError('telefono', 'err-telefono', !validatePhone(telefonoVal));
     const v4 = setError('mensaje',  'err-mensaje',  mensajeVal.length < 10);
-    const v5 = setError('select',   'err-select',   !select?.value);
+    const v5 = setError('select',   'err-select',   !selectVal);
 
+
+    // Si alguno falla, NO se envía
     if (!v1 || !v2 || !v3 || !v4 || !v5) {
       e.preventDefault();
       return;
@@ -153,17 +156,10 @@ if (form) {
       btnSubmit.textContent = 'Enviando…';
     }
 
-    // 5) Mostrar éxito después de un pequeño delay (para que el usuario vea confirmación)
-    //    Si Netlify tarda más, esto evita que “no aparezca nada”.
-    window.setTimeout(() => {
-      if (formLoading) formLoading.style.display = 'none';
-      // Mostrar éxito sin bloquear el reset del formulario.
-      if (formSuccess) formSuccess.classList.add('show');
-      if (btnSubmit) {
-        btnSubmit.disabled = false;
-        btnSubmit.textContent = 'Enviar mensaje';
-      }
-    }, 1200);
+    // IMPORTANT: NO forcemos éxito todavía; dejamos que Netlify procese el envío.
+    // (El mensaje de éxito lo mostramos solo si recarga/redirect o si Netlify lo maneja.)
+    // Para que el usuario vea algo, mantenemos el loader, pero no agregamos #form-success aquí.
+
 
 
   });
