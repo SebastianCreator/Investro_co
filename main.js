@@ -131,9 +131,6 @@ if (form) {
       return;
     }
 
-    // Ya pasó la validación: evitamos recarga para que se vea el mensaje y el form en blanco.
-    e.preventDefault();
-
     // 2) UI: mostrar loader/ocultar success
     const formLoading = document.getElementById('form-loading');
     if (formLoading) formLoading.style.display = 'block';
@@ -168,8 +165,7 @@ if (form) {
       }
     }, 1200);
 
-    // Evita que el submit recargue la página antes de mostrar el mensaje (si Netlify no lo controla).
-    e.preventDefault();
+
   });
 }
 
