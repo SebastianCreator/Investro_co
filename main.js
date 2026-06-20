@@ -78,8 +78,10 @@ function validatePhone(phone) {
 if (form) {
   const nombre = document.getElementById('nombre');
   const correo = document.getElementById('correo');
+  const select = document.getElementById('select');
   const telefono = document.getElementById('telefono');
   const mensaje = document.getElementById('mensaje');
+
 
   if (nombre) {
     nombre.addEventListener('input', function() {
@@ -90,6 +92,12 @@ if (form) {
   if (correo) {
     correo.addEventListener('input', function() {
       setError('correo', 'err-correo', !validateEmail(this.value.trim()));
+    });
+  }
+
+  if (select) {
+    select.addEventListener('change', function() {
+      setError('select', 'err-select', !this.value);
     });
   }
 
@@ -111,13 +119,15 @@ if (form) {
     const correoVal   = correo?.value.trim() ?? '';
     const telefonoVal = telefono?.value.trim() ?? '';
     const mensajeVal  = mensaje?.value.trim() ?? '';
+    const selectVal   = select?.value ?? '';
 
     const v1 = setError('nombre',   'err-nombre',   nombreVal.length < 3);
     const v2 = setError('correo',   'err-correo',   !validateEmail(correoVal));
     const v3 = setError('telefono', 'err-telefono', !validatePhone(telefonoVal));
     const v4 = setError('mensaje',  'err-mensaje',  mensajeVal.length < 10);
+    const v5 = setError('select',   'err-select',   !select?.value);
 
-    if (!v1 || !v2 || !v3 || !v4) {
+    if (!v1 || !v2 || !v3 || !v4 || !v5) {
       e.preventDefault();
       return;
     }
