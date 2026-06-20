@@ -114,12 +114,11 @@ if (form) {
   }
 
   form.addEventListener('submit', function(e) {
-    // Solo evitamos si hay errores; si está OK dejamos que Netlify capture el submit.
+    // 1) Validar y prevenir si hay errores
     const nombreVal   = nombre?.value.trim() ?? '';
     const correoVal   = correo?.value.trim() ?? '';
     const telefonoVal = telefono?.value.trim() ?? '';
     const mensajeVal  = mensaje?.value.trim() ?? '';
-    const selectVal   = select?.value ?? '';
 
     const v1 = setError('nombre',   'err-nombre',   nombreVal.length < 3);
     const v2 = setError('correo',   'err-correo',   !validateEmail(correoVal));
@@ -132,10 +131,45 @@ if (form) {
       return;
     }
 
+    // Ya pasó la validación: evitamos recarga para que se vea el mensaje y el form en blanco.
+    e.preventDefault();
+
+    // 2) UI: mostrar loader/ocultar success
+    const formLoading = document.getElementById('form-loading');
+    if (formLoading) formLoading.style.display = 'block';
+    if (formSuccess) formSuccess.classList.remove('show');
+
+    // 3) Dejar el formulario en blanco inmediatamente
+    form.reset();
+
+    // 4) Reset visual de errores y botón
+    ['nombre','telefono','correo','select','mensaje'].forEach((id) => {
+      if (id === 'mensaje') setError('mensaje', 'err-mensaje', false);
+      if (id === 'nombre') setError('nombre', 'err-nombre', false);
+      if (id === 'telefono') setError('telefono', 'err-telefono', false);
+      if (id === 'correo') setError('correo', 'err-correo', false);
+      if (id === 'select') setError('select', 'err-select', false);
+    });
+
     if (btnSubmit) {
       btnSubmit.disabled = true;
       btnSubmit.textContent = 'Enviando…';
     }
+
+    // 5) Mostrar éxito después de un pequeño delay (para que el usuario vea confirmación)
+    //    Si Netlify tarda más, esto evita que “no aparezca nada”.
+    window.setTimeout(() => {
+      if (formLoading) formLoading.style.display = 'none';
+      // Mostrar éxito sin bloquear el reset del formulario.
+      if (formSuccess) formSuccess.classList.add('show');
+      if (btnSubmit) {
+        btnSubmit.disabled = false;
+        btnSubmit.textContent = 'Enviar mensaje';
+      }
+    }, 1200);
+
+    // Evita que el submit recargue la página antes de mostrar el mensaje (si Netlify no lo controla).
+    e.preventDefault();
   });
 }
 
