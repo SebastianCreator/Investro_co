@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investro_co — Asesoría de Inversiones Financieras</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-mark"> <img src="img/Logo.jpg" alt="logo"></div>
+    <span class="nav-logo-text">Investro<span>_co</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#benefits">Nosotros</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#testimonials">Clientes</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" data-scroll-target="contact">
+    Agenda consulta
+  </button>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-chart" aria-hidden="true">
+    <svg viewBox="0 0 600 520" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grid lines -->
+      <line x1="0" y1="400" x2="600" y2="400" stroke="rgba(212,175,55,0.15)" stroke-width="1"/>
+      <line x1="0" y1="300" x2="600" y2="300" stroke="rgba(212,175,55,0.15)" stroke-width="1"/>
+      <line x1="0" y1="200" x2="600" y2="200" stroke="rgba(212,175,55,0.15)" stroke-width="1"/>
+      <line x1="0" y1="100" x2="600" y2="100" stroke="rgba(212,175,55,0.15)" stroke-width="1"/>
+      <!-- Area fill -->
+      <path d="M0,420 L60,390 L120,370 L180,340 L220,350 L280,300 L340,260 L400,200 L460,150 L520,90 L600,40 L600,520 L0,520 Z"
+            fill="rgba(31,111,65,0.12)"/>
+      <!-- Line -->
+      <path d="M0,420 L60,390 L120,370 L180,340 L220,350 L280,300 L340,260 L400,200 L460,150 L520,90 L600,40"
+            stroke="rgba(31,111,65,0.6)" stroke-width="2.5" fill="none"/>
+      <!-- Dots -->
+      <circle cx="400" cy="200" r="5" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="520" cy="90" r="5" fill="rgba(212,175,55,0.6)"/>
+      <circle cx="600" cy="40" r="5" fill="rgba(212,175,55,0.8)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Asesoría financiera de alto nivel</div>
+        <h1 class="hero-title">
+          Invierte con confianza,<br>crece con <em>Investro_co</em>
+        </h1>
+        <p class="hero-sub">
+          Asesoría financiera personalizada para maximizar tu futuro. Estrategias diseñadas para cada etapa de tu vida.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" data-scroll-target="contact">
+            Agenda tu consulta gratuita
+          </button>
+          <button class="btn-outline" data-scroll-target="services">
+            Ver servicios
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">+20</div>
+            <div class="stat-label">clientes activos</div>
+          </div>
+          <div>
+            <div class="stat-num">3+</div>
+            <div class="stat-label">años de experiencia</div>
+          </div>
+          <div>
+            <div class="stat-num">98%</div>
+            <div class="stat-label">satisfacción</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <div class="hero-illustration">
+          <img src="img/Logo.jpg" alt="Investro_co"> 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── BENEFITS ── -->
+<section id="benefits">
+  <div class="section-header center">
+    <div class="section-tag">Por qué elegirnos</div>
+    <h2 class="section-title">Tres pilares que nos distinguen</h2>
+    <p class="section-sub">Combinamos experiencia, tecnología y atención personalizada para que tu dinero trabaje por ti.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="benefit-title">Experiencia comprobada</div>
+      <p class="benefit-desc">Más de 2 años gestionando portafolios en mercados latinoamericanos e internacionales.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/><path d="M16 11l2 2 4-4"/></svg>
+      </div>
+      <div class="benefit-title">Estrategias personalizadas</div>
+      <p class="benefit-desc">Cada cliente recibe un plan financiero único, construido sobre sus metas, horizonte de tiempo y perfil de riesgo. Sin soluciones genéricas.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      </div>
+      <div class="benefit-title">Resultados medibles</div>
+      <p class="benefit-desc">Reportes mensuales de rendimiento, alertas en tiempo real y tableros de control. Siempre sabes exactamente cómo crece tu patrimonio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="section-header">
+    <div class="section-tag">Nuestros servicios</div>
+    <h2 class="section-title">Soluciones para cada objetivo</h2>
+    <p class="section-sub">Desde la construcción de tu primer portafolio hasta la optimización fiscal internacional.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div>
+        <div class="service-title">Portafolios de inversión</div>
+        <p class="service-desc">Construimos y gestionamos carteras diversificadas en renta variable, renta fija, commodities y activos alternativos, alineadas a tu perfil.</p>
+        <span class="service-tag">Gestión activa</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div>
+        <div class="service-title">Planificación financiera</div>
+        <p class="service-desc">Diseño integral de tu patrimonio: metas de retiro, educación, vivienda y protección. Un plan claro para cada etapa de tu vida.</p>
+        <span class="service-tag">Largo plazo</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div>
+        <div class="service-title">Consultoría nacional</div>
+        <p class="service-desc">Asesoramiento especializado en temas financieros y de inversión, adaptado a las leyes y regulaciones locales.</p>
+        <span class="service-tag">Global</span>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <div>
+        <div class="service-title">Asesoria personalizada</div>
+        <p class="service-desc">Asesoramiento adaptado a tus necesidades específicas, con un enfoque en tu perfil de inversión y objetivos financieros.</p>
+        <span class="service-tag">Eficiencia</span>
+      </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="section-header center">
+    <div class="section-tag">Testimonios</div>
+    <h2 class="section-title" style="color:white;">Lo que dicen nuestros clientes</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">En dos años con Investro_co mi portafolio creció un 34%. Lo mejor: siempre entendí exactamente qué estaba pasando con mi dinero. Comunicación impecable.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar av-a">CM</div>
+        <div>
+          <div class="author-name">Carlos Mendoza</div>
+          <div class="author-role">Empresario · Bogotá</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">Llegué sin saber nada de inversiones. El equipo me acompañó en cada decisión con paciencia y profesionalismo.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar av-b">LT</div>
+        <div>
+          <div class="author-name">Laura Torres</div>
+          <div class="author-role">Médica · Medellín</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">El equipo de Investro_co me ayudó a entender mis opciones de inversión y a construir un plan que se ajustara a mis objetivos. Muy profesional y accesible.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar av-c">AR</div>
+        <div>
+          <div class="author-name">Andrés Ríos</div>
+          <div class="author-role">Director Financiero · Cali</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section id="cta-band">
+  <h2 class="cta-band-title">Tu futuro financiero comienza hoy</h2>
+  <p class="cta-band-sub">Primera consulta sin costo. Sin compromisos. Solo claridad sobre tu camino financiero.</p>
+  <button class="btn-primary" data-scroll-target="contact">
+    Solicita tu asesoría →
+  </button>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div>
+      <div class="section-tag">Contacto</div>
+      <h2 class="section-title">Hablemos de tu futuro financiero</h2>
+      <p class="contact-info-text">Completa el formulario y un asesor certificado te contactará en menos de 24 horas.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/></svg>
+        </div>
+        <span>Investro_co</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <span>hmiguelitto04@gmail.com</span>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span>Bucaramanga, Santander, Colombia</span>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div id="form-success" class="form-success">
+        <div class="form-success-icon">✅</div>
+        <strong>¡Mensaje enviado!</strong><br>
+        Un asesor te contactará dentro de las próximas 24 horas.
+      </div>
+      <form id="contactForm" name="contact" method="POST" data-netlify="true" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" autocomplete="name"/>
+            <span class="field-error" id="err-nombre">Ingresa tu nombre completo.</span>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+57 300 000 0000" autocomplete="tel"/>
+            <span class="field-error" id="err-telefono">Ingresa un número válido.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input type="email" id="correo" name="correo" placeholder="juan@empresa.com" autocomplete="email"/>
+          <span class="field-error" id="err-correo">Ingresa un correo válido.</span>
+        </div>
+        <div class="form-group">
+          <label for="mensaje">¿En qué te podemos ayudar?</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos tus objetivos financieros o en qué servicio estás interesado…"></textarea>
+          <span class="field-error" id="err-mensaje">Escribe un mensaje de al menos 10 caracteres.</span>
+        </div>
+        <button type="submit" class="btn-submit" id="btn-submit">
+          Enviar mensaje
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">
+        <div class="footer-logo-mark"></div>
+        <span class="footer-logo-text">Investro<span>_co</span></span>
+      </div>
+      <p class="footer-brand-desc">
+        Firma de asesoría financiera especializada en inversiones, planificación patrimonial y optimización fiscal para personas y empresas en Colombia y el exterior.
+      </p>
+      <div class="footer-socials">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/miguel-hern%C3%A1ndez-7692022b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGn85ziXUMCCSg-aJ_dLlVey_CuQ5pykhcNCf29oQMetIFeHCsNNamxDlTqCgM_aem_nJN6BwKVq3v2oreaVq7Hig" target="_blank" class="social-btn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/investro_co/" target="_blank" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <!-- Facebook
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>  -->
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navegación</div>
+      <ul class="footer-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#benefits">Nosotros</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#testimonials">Clientes</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="#services">Portafolios</a></li>
+        <li><a href="#services">Planificación</a></li>
+        <li><a href="#services">Consultoría Nal.</a></li>
+        <li><a href="#services">Asesoria</a></li>
+      </ul>
+    </div>
+    <!-- <div>
+      <div class="footer-col-title">Legal</div>
+      <ul class="footer-links">
+        <li><a href="#">Aviso legal</a></li>
+        <li><a href="#">Política de privacidad</a></li>
+        <li><a href="#">Términos de uso</a></li>
+        <li><a href="#">Regulación AMV</a></li>
+      </ul>
+    </div>
+  </div>-->
+  <div class="footer-bottom">
+    <span>© 2026 Investro_co. Todos los derechos reservados.</span>
+    <div class="footer-legal">
+      <a href="#">Aviso legal</a>
+      <a href="#">Privacidad</a>
+      <a href="#">Términos</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>
