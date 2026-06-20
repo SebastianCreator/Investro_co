@@ -106,8 +106,7 @@ if (form) {
   }
 
   form.addEventListener('submit', function(e) {
-    // Netlify Forms necesita que el submit ocurra.
-    // Solo prevenimos si hay errores de validación.
+    // Solo evitamos si hay errores; si está OK dejamos que Netlify capture el submit.
     const nombreVal   = nombre?.value.trim() ?? '';
     const correoVal   = correo?.value.trim() ?? '';
     const telefonoVal = telefono?.value.trim() ?? '';
@@ -127,10 +126,6 @@ if (form) {
       btnSubmit.disabled = true;
       btnSubmit.textContent = 'Enviando…';
     }
-
-    // Deja que el submit continúe hacia Netlify.
-    // El mensaje de éxito se mostrará al volver con la redirección de Netlify (o en caso de fallback).
-    // Si quieres evitar navegación, habría que usar fetch + endpoint.
   });
 }
 
