@@ -542,6 +542,13 @@ section { padding: 96px 6vw; }
 }
 .contact-detail-icon svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
+.contact-detail a {
+  color: var(--dark); text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-detail a:hover { color: var(--green); }
+
 .contact-form {
   background: var(--white);
   border-radius: 16px;
@@ -550,7 +557,6 @@ section { padding: 96px 6vw; }
   width: 100%;
   max-width: 100%;
 }
-
 
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
