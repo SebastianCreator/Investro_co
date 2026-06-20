@@ -252,13 +252,19 @@
     </div>
 
     <div class="contact-form">
-      <div id="form-success" class="form-success">
+      <div id="form-loading" class="form-loading" aria-live="polite" style="display:none;">
+        Enviando tu solicitud…
+      </div>
+
+      <div id="form-success" class="form-success" role="status" aria-live="polite">
         <div class="form-success-icon">✅</div>
         <strong>¡Mensaje enviado!</strong><br>
         Un asesor te contactará dentro de las próximas 24 horas.
       </div>
+
       <form id="contactForm" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="contact"/>
+
         <p style="display:none;">
           <label>Don’t fill this out if you’re human: <input name="bot-field"/></label>
         </p>
