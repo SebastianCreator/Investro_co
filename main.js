@@ -132,15 +132,32 @@ if (form) {
     const mensajeVal  = mensaje?.value.trim() ?? '';
     const selectVal   = select?.value ?? '';
 
-    const v1 = setError('nombre',   'err-nombre',   nombreVal.length < 3);
-    const v2 = setError('correo',   'err-correo',   !validateEmail(correoVal));
-    const v3 = setError('telefono', 'err-telefono', !validatePhone(telefonoVal));
-    const v4 = setError('mensaje',  'err-mensaje',  mensajeVal.length < 10);
-    const v5 = setError('select',   'err-select',   !selectVal);
+    const nombreOk   = nombreVal.length >= 3;
+    const correoOk   = validateEmail(correoVal);
+    const telefonoOk = validatePhone(telefonoVal);
+    const mensajeOk  = mensajeVal.length >= 10;
+    const selectOk   = !!selectVal;
+
+    // Renderizar errores (show = !ok)
+    setError('nombre',   'err-nombre',   !nombreOk);
+    setError('correo',   'err-correo',   !correoOk);
+    setError('telefono', 'err-telefono', !telefonoOk);
+    setError('mensaje',  'err-mensaje',  !mensajeOk);
+    setError('select',   'err-select',   !selectOk);
+
+    const allOk = nombreOk && correoOk && telefonoOk && mensajeOk && selectOk;
 
     // Si alguno falla, NO se envía
-    if (!v1 || !v2 || !v3 || !v4 || !v5) {
-      console.warn('[contactForm] validation failed', { nombreValLen: nombreVal.length, correoVal, telefonoVal, mensajeValLen: mensajeVal.length, selectVal });
+    if (!allOk) {
+      console.warn('[contactForm] validation failed', {
+        nombreValLen: nombreVal.length,
+        correoOk,
+        telefonoOk,
+        mensajeValLen: mensajeVal.length,
+        selectVal,
+        nombreOk,
+        allOk
+      });
       e.preventDefault();
       return;
     }
@@ -150,6 +167,7 @@ if (form) {
     // - que se muestre éxito
     // - que el formulario quede en blanco
     e.preventDefault();
+
 
     const formLoading = document.getElementById('form-loading');
     if (formLoading) formLoading.style.display = 'block';
